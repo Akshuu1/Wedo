@@ -2,7 +2,6 @@
 
 import HouseScene from '@/components/canvas/HouseScene'
 import { motion } from 'framer-motion'
-import ScrambleText from '@/components/ui/ScrambleText'
 
 const TEAM = [
   { name: "Akshat", role: "Developer", bio: "Passionate about building fast, reliable, and beautiful web systems." },
@@ -41,7 +40,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="clip-panel p-12 bg-white/[0.02] border border-white/10">
-            <h3 className="text-xl font-syne font-black text-white uppercase italic mb-6">Why We Work</h3>
+            <h3 className="text-xl font-syne font-black text-white uppercase italic mb-6">Our Values</h3>
             <ul className="space-y-6">
               {[
                 { t: "Honesty", d: "We are clear about what we can do and how long it will take." },
@@ -57,7 +56,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Team Section - Simplified */}
         <div className="mb-48">
           <h2 className="text-4xl font-syne font-black text-white uppercase italic mb-16 text-center">The Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -76,7 +74,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Workflow Section - Simplified */}
         <div className="text-center">
           <h2 className="text-4xl font-syne font-black text-white uppercase italic mb-12">How We Work</h2>
           <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">

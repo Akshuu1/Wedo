@@ -32,10 +32,10 @@ function TiltCard({ children, className }) {
 }
 
 const SERVICES = [
-  { num: "01", title: "Website Design", desc: "We build beautiful, fast websites that work perfectly on all devices. From simple landing pages to complex business sites.", icon: "⬡" },
-  { num: "02", title: "Social Media", desc: "We handle your Instagram and LinkedIn. We create the content, plan the strategy, and help you grow your audience.", icon: "⬡" },
-  { num: "03", title: "UI/UX Design", desc: "We design easy-to-use apps and websites that your customers will love. We focus on making things simple and effective.", icon: "⬡" },
-  { num: "04", title: "Branding", desc: "We create your logo, choose your colors, and build your entire brand identity from the ground up.", icon: "⬡" },
+  { num: "01", title: "Website Design", desc: "We build beautiful, fast websites that work perfectly on all devices. From simple landing pages to complex business sites." },
+  { num: "02", title: "Social Media", desc: "We handle your Instagram and LinkedIn. We create the content, plan the strategy, and help you grow your audience." },
+  { num: "03", title: "UI/UX Design", desc: "We design easy-to-use apps and websites that your customers will love. We focus on making things simple and effective." },
+  { num: "04", title: "Branding", desc: "We create your logo, choose your colors, and build your entire brand identity from the ground up." },
 ]
 
 const HOW = [
@@ -56,13 +56,13 @@ export default function Home() {
       <div className="scanlines" />
       <HouseScene />
 
-      {/* Hero Section - Simplified Language */}
+      {/* Hero Section - NO SCRAMBLE AT ALL */}
       <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 pt-28 pb-16">
         <motion.div style={{ y: y1, opacity }} className="relative z-10 w-full max-w-5xl">
 
           <div className="flex items-center justify-center gap-3 mb-8">
             <div className="w-8 h-[1px] bg-white/20" />
-            <span className="text-white/40 font-mono text-[8px] tracking-[0.4em] uppercase">
+            <span className="text-white/40 font-mono text-[8px] tracking-[0.4em] uppercase font-bold">
               Creative Agency · India
             </span>
             <div className="w-8 h-[1px] bg-white/20" />
@@ -85,7 +85,7 @@ export default function Home() {
               <button className="clip-button w-full sm:w-60 py-4 uppercase tracking-widest text-[9px] font-black">Our Services</button>
             </Link>
             <Link href="/contact" className="w-full sm:w-auto">
-              <button className="w-full sm:w-60 px-6 py-4 border border-white/10 text-white font-black text-[9px] tracking-[0.4em] uppercase hover:bg-white hover:text-black transition-all">
+              <button className="w-full sm:w-64 px-6 py-4 border border-white/10 text-white font-black text-[9px] tracking-[0.4em] uppercase hover:bg-white hover:text-black transition-all">
                 Talk to Us
               </button>
             </Link>
@@ -93,7 +93,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* About WEDO Strip - Simplified Language */}
+      {/* About WEDO Strip */}
       <section className="relative z-10 py-16 md:py-20 px-6 md:px-12 border-y border-white/5 bg-white/[0.01]">
         <div className="max-w-screen-xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-white/10">
@@ -118,7 +118,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section - Simplified Language */}
+      {/* Services Section */}
       <section className="relative py-24 md:py-32 px-6 md:px-12" id="services">
         <div className="max-w-screen-xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
@@ -157,7 +157,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How We Work Section - Simplified Language */}
+      {/* Process Section */}
       <section className="relative py-24 md:py-32 px-6 md:px-12 border-t border-white/5">
         <div className="max-w-screen-xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
@@ -190,7 +190,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials - Simplified Language */}
+      {/* Testimonials */}
       <section className="relative py-24 md:py-32 px-6 md:px-12 border-t border-white/5">
         <div className="max-w-screen-xl mx-auto">
           <div className="flex items-center justify-center gap-4 mb-16">
@@ -218,11 +218,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section - Simplified Language */}
+      {/* CTA Section */}
       <section className="relative py-32 md:py-48 px-6 md:px-12 text-center border-t border-white/5">
         <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="max-w-3xl mx-auto">
           <div className="text-[8px] font-mono text-white/20 uppercase tracking-[0.5em] mb-8">Ready to grow?</div>
-          <h2 className="font-syne font-extrabold text-white text-4xl md:text-7xl uppercase tracking-tight leading-[1] mb-8 lag-text">
+          <h2 className="font-syne font-extrabold text-white text-4xl md:text-8xl uppercase tracking-tight leading-[1] mb-8 lag-text">
             LET'S WORK<br/><span className="text-white/20">TOGETHER.</span>
           </h2>
           <p className="text-white/50 text-sm md:text-base mb-12 max-w-xl mx-auto leading-relaxed">

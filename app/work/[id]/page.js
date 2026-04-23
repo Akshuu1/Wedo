@@ -4,32 +4,31 @@ import { useParams } from 'next/navigation'
 import HouseScene from '@/components/canvas/HouseScene'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import ScrambleText from '@/components/ui/ScrambleText'
 
 const PROJECTS = {
   'tech-nexus': {
-    title: 'TechNexus Command',
-    type: 'Web System',
+    title: 'TechNexus Platform',
+    type: 'Website',
     year: '2026',
-    description: 'A high-performance digital command center built for a leading tech conglomerate. Focused on real-time data visualization and cinematic user flows.',
-    tags: ['Next.js', 'WebGL', 'GSAP'],
-    outcome: '400% increase in user engagement and zero downtime during high-traffic launches.'
+    description: 'A professional dashboard built for a major tech company. We focused on making complex data easy to see and use.',
+    tags: ['Design', 'Development', 'Strategy'],
+    outcome: 'We helped them increase user engagement by 400% and kept the site running perfectly even during busy launches.'
   },
   'novastream': {
-    title: 'NovaStream Engine',
-    type: 'Streaming Platform',
+    title: 'NovaStream Site',
+    type: 'Website',
     year: '2025',
-    description: 'Architecting the future of media streaming with a brutalist, high-fidelity interface and lightning-fast content delivery.',
-    tags: ['React', 'Three.js', 'Vercel'],
-    outcome: 'Successful deployment to 1M+ active users with a 98+ Lighthouse score.'
+    description: 'A modern, cinematic website designed for a leading media company. It’s built to be lightning-fast and easy for users to navigate.',
+    tags: ['Branding', 'Web Dev', 'UI UX'],
+    outcome: 'The site now handles over 1 million users with perfect speed and performance scores.'
   },
   'zeropoint': {
-    title: 'ZeroPoint Identity',
+    title: 'ZeroPoint Branding',
     type: 'Brand System',
     year: '2026',
-    description: 'Establishing market sovereignty through a visually aggressive and strategically deep brand identity system.',
-    tags: ['Strategy', 'Identity', 'Visuals'],
-    outcome: 'Secured $10M+ in Series A funding through a dominant market presentation.'
+    description: 'A complete brand identity and website for a fintech startup. We created a unique look that helped them stand out in a crowded market.',
+    tags: ['Logo Design', 'Web Design', 'Identity'],
+    outcome: 'This new brand look helped the company raise over $10M in funding by making them look professional and established.'
   }
 }
 
@@ -45,7 +44,7 @@ export default function ProjectPage() {
       <div className="max-w-screen-xl mx-auto relative z-10 pointer-events-auto">
         <div className="flex items-center gap-6 mb-12">
           <Link href="/work" className="text-white/40 hover:text-white transition-colors flex items-center gap-2">
-             <span className="font-mono text-[9px] uppercase tracking-widest">← Return_to_Missions</span>
+             <span className="font-mono text-[9px] uppercase tracking-widest">← Back to Work</span>
           </Link>
         </div>
 
@@ -55,10 +54,10 @@ export default function ProjectPage() {
             animate={{ opacity: 1, x: 0 }}
           >
             <div className="flex items-center gap-4 mb-8">
-              <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.4em]">Mission_Report // {project.year}</span>
+              <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.4em]">Project Case Study // {project.year}</span>
             </div>
             <h1 className="text-6xl md:text-8xl font-syne font-black text-white uppercase italic leading-[0.85] mb-12 lag-text">
-               <ScrambleText text={project.title} />
+               {project.title}
             </h1>
             <p className="text-white/60 text-xl leading-relaxed mb-12 max-w-xl italic">
               {project.description}
@@ -71,7 +70,7 @@ export default function ProjectPage() {
             </div>
 
             <div className="clip-panel p-10 bg-white/[0.02]">
-              <div className="text-white/20 font-mono text-[8px] mb-4 uppercase tracking-widest">Strategic_Outcome</div>
+              <div className="text-white/20 font-mono text-[8px] mb-4 uppercase tracking-widest">The Result</div>
               <p className="text-white text-lg font-syne italic">{project.outcome}</p>
             </div>
           </motion.div>
@@ -82,15 +81,14 @@ export default function ProjectPage() {
             className="aspect-[4/5] bg-gradient-to-br from-white/5 to-transparent border border-white/10 clip-panel flex items-center justify-center overflow-hidden"
           >
             <div className="hud-grid opacity-20" />
-            <div className="text-white/10 font-mono text-[10px] tracking-[2em] uppercase -rotate-90">Visual_Data_Locked</div>
+            <div className="text-white/10 font-mono text-[10px] tracking-[2em] uppercase -rotate-90">Project Visual</div>
           </motion.div>
         </div>
 
-        {/* Tactical Footer for Project */}
         <div className="mt-64 flex flex-col items-center text-center">
-           <h3 className="text-2xl font-syne font-black text-white uppercase italic mb-12">READY TO START YOUR MISSION?</h3>
+           <h3 className="text-2xl font-syne font-black text-white uppercase italic mb-12">READY TO WORK WITH US?</h3>
            <Link href="/contact">
-              <button className="clip-button">INITIATE COMMAND →</button>
+              <button className="clip-button">GET IN TOUCH →</button>
            </Link>
         </div>
       </div>
