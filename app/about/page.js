@@ -2,90 +2,92 @@
 
 import HouseScene from '@/components/canvas/HouseScene'
 import { motion } from 'framer-motion'
-import { PinContainer } from '@/components/ui/3d-pin'
+import ScrambleText from '@/components/ui/ScrambleText'
+
+const TEAM = [
+  { name: "Akshat", role: "Developer", bio: "Passionate about building fast, reliable, and beautiful web systems." },
+  { name: "Sneha", role: "Designer", bio: "Creative expert focused on making apps and websites look professional and premium." }
+]
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen bg-black pt-64 pb-24 px-10 md:px-24 z-10 overflow-hidden">
+    <main className="relative min-h-screen bg-black pt-48 pb-24 px-10 md:px-24 z-10 overflow-hidden">
       <div className="scanlines" />
       <HouseScene />
 
-      <div className="max-w-screen-xl mx-auto relative z-10 pointer-events-auto">
+      <div className="max-w-screen-xl mx-auto relative z-10">
         <div className="flex items-center gap-6 mb-12">
           <div className="w-12 h-[1px] bg-white/40" />
-          <span className="text-white/40 font-mono text-[9px] tracking-[0.5em] uppercase font-bold">Protocol_02 // Command_Central</span>
+          <span className="text-white/40 font-mono text-[9px] tracking-[0.5em] uppercase font-bold">About WeDo</span>
         </div>
 
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-7xl md:text-9xl font-syne font-black uppercase leading-[0.8] mb-32 text-white italic"
+          className="text-6xl md:text-9xl font-syne font-black uppercase leading-[0.8] mb-24 text-white italic"
         >
-          THE<br/>
-          <span className="text-white/20">COMMAND.</span>
+          WE ARE<br/>
+          <span className="text-white/20">WEDO.</span>
         </motion.h1>
 
-        {/* Founder Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-64">
-          <PinContainer title="Mission Commander // Akshat" href="https://linkedin.com">
-            <div className="flex basis-[20rem] flex-col p-4 tracking-tight text-slate-100/50 sm:basis-[25rem] w-[20rem] h-[25rem] md:w-[25rem] md:h-[30rem]">
-              <h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-slate-100">Akshat</h3>
-              <div className="text-base !m-0 !p-0 font-normal">
-                <span className="text-slate-500 ">
-                  Lead Architect and Visionary. Engineering digital weapons that redefine market standards.
-                </span>
-              </div>
-              <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-white/10 to-transparent border border-white/5 items-center justify-center">
-                <span className="text-[10px] font-mono text-white/20 tracking-[1em] uppercase">Visual_Data_Corrupt</span>
-              </div>
-            </div>
-          </PinContainer>
-
-          <PinContainer title="Strategic Lead // Sneha" href="https://linkedin.com">
-            <div className="flex basis-[20rem] flex-col p-4 tracking-tight text-slate-100/50 sm:basis-[25rem] w-[20rem] h-[25rem] md:w-[25rem] md:h-[30rem]">
-              <h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-slate-100">Sneha</h3>
-              <div className="text-base !m-0 !p-0 font-normal">
-                <span className="text-slate-500 ">
-                  Strategy and Operations. Synchronizing brand narrative with technical excellence.
-                </span>
-              </div>
-              <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-white/10 to-transparent border border-white/5 items-center justify-center">
-                <span className="text-[10px] font-mono text-white/20 tracking-[1em] uppercase">Visual_Data_Corrupt</span>
-              </div>
-            </div>
-          </PinContainer>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-48">
+          <div>
+            <h2 className="text-3xl font-syne font-black text-white uppercase italic mb-8">Our Mission</h2>
+            <p className="text-white/50 text-lg leading-relaxed mb-8">
+              We started WeDo because we saw how difficult it was for businesses to get high-quality digital work without getting lost in technical jargon.
+            </p>
+            <p className="text-white/50 text-lg leading-relaxed">
+              Our goal is simple: We build the digital tools you need to grow your business, handle your online presence, and make sure you look professional from day one.
+            </p>
+          </div>
+          <div className="clip-panel p-12 bg-white/[0.02] border border-white/10">
+            <h3 className="text-xl font-syne font-black text-white uppercase italic mb-6">Why We Work</h3>
+            <ul className="space-y-6">
+              {[
+                { t: "Honesty", d: "We are clear about what we can do and how long it will take." },
+                { t: "Quality", d: "We don't cut corners. Every line of code and every design is crafted with care." },
+                { t: "Growth", d: "Your success is our success. We want to see your business thrive." }
+              ].map((item, i) => (
+                <li key={i}>
+                  <div className="text-white font-bold uppercase text-[10px] tracking-widest mb-1">{item.t}</div>
+                  <div className="text-white/30 text-[10px] leading-relaxed uppercase">{item.d}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Operational Workflow */}
-        <section className="mb-64">
-          <h2 className="text-4xl md:text-6xl font-syne font-black text-white uppercase italic mb-24 text-center">OPERATIONAL<br/><span className="text-white/20">WORKFLOW.</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { id: "01", t: "INITIATE", d: "Deep dive into mission objectives and strategic alignment." },
-              { t: "ARCHITECT", d: "High-fidelity blueprinting and cinematic UI/UX design." },
-              { t: "DEPLOY", d: "Rapid engineering using cutting-edge technical stacks." },
-              { t: "DOMINATE", d: "Growth tracking, performance audits, and scaling." }
-            ].map((step, i) => (
-              <div key={i} className="clip-panel p-8 group hover:bg-white/10 transition-all">
-                <div className="text-white/20 font-mono text-xs mb-8">STEP_{i+1}</div>
-                <h4 className="text-2xl font-syne font-black text-white mb-4 italic uppercase">{step.t}</h4>
-                <p className="text-white/40 text-[10px] font-mono uppercase tracking-widest">{step.d}</p>
+        {/* Team Section - Simplified */}
+        <div className="mb-48">
+          <h2 className="text-4xl font-syne font-black text-white uppercase italic mb-16 text-center">The Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {TEAM.map((member, i) => (
+              <div key={i} className="group p-10 border border-white/5 hover:border-white/20 transition-all bg-white/[0.01]">
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <h3 className="text-3xl font-syne font-black text-white uppercase italic">{member.name}</h3>
+                    <p className="text-white/30 font-mono text-[9px] uppercase tracking-widest mt-1">{member.role}</p>
+                  </div>
+                  <div className="w-12 h-[1px] bg-white/10" />
+                </div>
+                <p className="text-white/40 leading-relaxed text-sm">{member.bio}</p>
               </div>
             ))}
           </div>
-        </section>
+        </div>
 
-        {/* Agency Manifesto */}
-        <section className="clip-panel p-12 md:p-24 text-center bg-white/[0.02]">
-          <div className="hud-grid opacity-10" />
-          <h2 className="text-3xl md:text-5xl font-syne font-black text-white uppercase italic mb-12">THE MANIFESTO.</h2>
-          <p className="text-xl md:text-3xl text-white/60 font-sans leading-relaxed max-w-4xl mx-auto italic tracking-tight">
-            "WE BELIEVE IN DIGITAL SOVEREIGNTY. <br/>
-            EVERY PIXEL IS A STRATEGIC MOVE. <br/>
-            EVERY LINE OF CODE IS A MISSION OBJECTIVE. <br/>
-            WE DON'T COMPETE; WE REDEFINE THE FIELD."
-          </p>
-        </section>
+        {/* Workflow Section - Simplified */}
+        <div className="text-center">
+          <h2 className="text-4xl font-syne font-black text-white uppercase italic mb-12">How We Work</h2>
+          <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            {["Listen", "Plan", "Build", "Launch"].map((step, i) => (
+              <div key={i}>
+                <div className="text-white/10 font-syne font-black text-5xl mb-4">0{i+1}</div>
+                <div className="text-white uppercase font-bold text-[10px] tracking-widest">{step}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   )
