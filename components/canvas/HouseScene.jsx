@@ -5,6 +5,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { 
   PerspectiveCamera, 
   Stars,
+  Float
 } from '@react-three/drei'
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
 import * as THREE from 'three'
@@ -13,18 +14,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+/* ─── Depth-Enhanced Warp Shader ─────────────────────────── */
 const WarpMaterial = {
   uniforms: {
     uTime: { value: 0 },
     uMouse: { value: new THREE.Vector2(0, 0) },
     uSpeed: { value: 1.0 },
-    uColor: { value: new THREE.Color("#ffffff") }, // STRICT WHITE
+    uColor: { value: new THREE.Color("#ffffff") },
   },
   vertexShader: `
     varying vec2 vUv;
+    varying float vZ;
     void main() {
       vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+      vZ = mvPosition.z;
+      gl_Position = projectionMatrix * mvPosition;
     }
   `,
   fragmentShader: `
@@ -33,52 +38,43 @@ const WarpMaterial = {
     uniform float uSpeed;
     uniform vec3 uColor;
     varying vec2 vUv;
+    varying float vZ;
     
     void main() {
-      vec2 distUv = vUv + uMouse * 0.03;
-      float lines = sin(distUv.x * 25.0 + uTime * 12.0 * uSpeed) * sin(distUv.y * 25.0);
-      float glow = smoothstep(0.95, 1.0, lines);
-      float alpha = smoothstep(0.0, 0.4, vUv.y) * smoothstep(1.0, 0.6, vUv.y);
-      gl_FragColor = vec4(uColor, glow * alpha * (0.35 + uSpeed * 0.15));
+      // Sharp, elegant energy lines
+      float lines = sin(vUv.x * 25.0 + uTime * 15.0 * uSpeed) * sin(vUv.y * 25.0);
+      float glow = smoothstep(0.97, 1.0, lines);
+      
+      // Enhanced Depth Fade: Creates a deeper 'void' look at the end
+      float depthFade = clamp(1.0 - (abs(vZ) / 130.0), 0.0, 1.0);
+      
+      gl_FragColor = vec4(uColor, glow * depthFade * (0.35 + uSpeed * 0.15));
     }
   `
 }
 
+/* ─── Warp Tunnel Component ───────────────────────────────── */
 function WarpTunnel() {
   const tunnelRef = useRef()
   const mouse = useThree((state) => state.mouse)
-  const [targetSpeed, setTargetSpeed] = useState(1)
-  const currentSpeed = useRef(1)
   
   useFrame((state) => {
     const t = state.clock.elapsedTime
-    currentSpeed.current = THREE.MathUtils.lerp(currentSpeed.current, targetSpeed, 0.08)
-    
     WarpMaterial.uniforms.uTime.value = t
-    WarpMaterial.uniforms.uSpeed.value = currentSpeed.current
     WarpMaterial.uniforms.uMouse.value.lerp(mouse, 0.05)
     
     if (tunnelRef.current) {
-      tunnelRef.current.rotation.z = t * 0.03
-      tunnelRef.current.rotation.x = Math.PI / 2 + mouse.y * 0.1
-      tunnelRef.current.rotation.y = mouse.x * 0.1
+      tunnelRef.current.rotation.z = t * 0.02
+      tunnelRef.current.rotation.x = Math.PI / 2 + mouse.y * 0.15
+      tunnelRef.current.rotation.y = mouse.x * 0.15
     }
   })
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setTargetSpeed(5)
-      const timeout = setTimeout(() => setTargetSpeed(1), 500)
-      return () => clearTimeout(timeout)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   return (
     <group ref={tunnelRef}>
       <mesh>
-        <cylinderGeometry args={[12, 1, 120, 48, 1, true]} />
+        {/* Lengthened tunnel for more depth */}
+        <cylinderGeometry args={[16, 1, 200, 48, 1, true]} />
         <shaderMaterial 
           args={[WarpMaterial]} 
           side={THREE.BackSide}
@@ -88,18 +84,21 @@ function WarpTunnel() {
         />
       </mesh>
       
-      {useMemo(() => [...Array(12)].map((_, i) => (
-        <mesh key={i} position={[0, 40 - i * 10, 0]} rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[11 - i * 0.6, 0.008, 8, 48]} />
-          <meshBasicMaterial color="white" transparent opacity={0.1} />
+      {/* Increased rings from 12 to 20 for extra depth layers */}
+      {useMemo(() => [...Array(20)].map((_, i) => (
+        <mesh key={i} position={[0, 80 - i * 10, 0]} rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[15 - i * 0.7, 0.005, 12, 64]} />
+          <meshBasicMaterial color="white" transparent opacity={0.08 - (i * 0.002)} />
         </mesh>
       )), [])}
     </group>
   )
 }
 
+/* ─── Main Scene ──────────────────────────────────────────── */
 function Scene() {
   const cameraRef = useRef()
+  const mouse = useThree((state) => state.mouse)
 
   useEffect(() => {
     if (!cameraRef.current) return
@@ -111,20 +110,40 @@ function Scene() {
         scrub: 1,
       }
     })
-    tl.to(cameraRef.current.position, { z: -80, ease: "none" }, 0)
+    
+    // Deeper zoom range
+    tl.to(cameraRef.current.position, { z: -120, ease: "none" }, 0)
+    
     return () => tl.kill()
   }, [])
 
+  useFrame(() => {
+    if (cameraRef.current) {
+      const targetX = mouse.x * 8
+      const targetY = mouse.y * 6
+      cameraRef.current.position.x = THREE.MathUtils.lerp(cameraRef.current.position.x, targetX, 0.05)
+      cameraRef.current.position.y = THREE.MathUtils.lerp(cameraRef.current.position.y, targetY, 0.05)
+      cameraRef.current.lookAt(0, 0, cameraRef.current.position.z - 60)
+    }
+  })
+
   return (
     <>
-      <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 40]} fov={60} />
-      {/* Strict white stars, no saturation */}
-      <Stars radius={300} depth={100} count={3500} factor={6} saturation={0} fade speed={2} />
+      <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 45]} fov={65} />
+      
+      {/* Extra background layer for depth */}
+      <Stars radius={400} depth={100} count={5000} factor={8} saturation={0} fade speed={1} />
+      
+      {/* Floating subtle debris for parallax depth */}
+      <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
+        <Stars radius={100} depth={50} count={500} factor={4} saturation={0} />
+      </Float>
+
       <WarpTunnel />
+      
       <EffectComposer disableNormalPass multisampling={0}>
         <Bloom luminanceThreshold={0.9} intensity={2.5} radius={0.4} />
-        {/* Removed Chromatic Aberration to eliminate colors */}
-        <Vignette eskil={false} offset={0.1} darkness={1.4} />
+        <Vignette eskil={false} offset={0.1} darkness={1.6} />
       </EffectComposer>
     </>
   )

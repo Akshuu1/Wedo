@@ -4,6 +4,7 @@ import HouseScene from '@/components/canvas/HouseScene'
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
+import ScrambleText from '@/components/ui/ScrambleText'
 
 function TiltCard({ children, className }) {
   const x = useMotionValue(0)
@@ -56,7 +57,7 @@ export default function Home() {
       <div className="scanlines" />
       <HouseScene />
 
-      {/* Hero Section - NO SCRAMBLE AT ALL */}
+      {/* Hero Section */}
       <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 pt-28 pb-16">
         <motion.div style={{ y: y1, opacity }} className="relative z-10 w-full max-w-5xl">
 
@@ -68,9 +69,14 @@ export default function Home() {
             <div className="w-8 h-[1px] bg-white/20" />
           </div>
 
-          <h1 className="font-syne font-extrabold text-white text-[clamp(2.8rem,10vw,7.5rem)] uppercase tracking-tight leading-[0.88] mb-6 lag-text">
-            WE BUILD<br/>
-            <span className="text-white/20">BRANDS.</span>
+          <h1 className="text-[clamp(3rem,10vw,8rem)] font-syne font-extrabold uppercase leading-[0.88] tracking-tight mb-6 flex flex-col items-center lag-text">
+            <div className="flex overflow-hidden">
+               <motion.span initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} className="text-white">WE</motion.span>
+               <motion.span initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }} className="text-white ml-4">BUILD</motion.span>
+            </div>
+            <div className="flex overflow-hidden">
+               <motion.span initial={{ y: "-100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }} className="text-white/20 text-outline">BRANDS.</motion.span>
+            </div>
           </h1>
 
           <p className="max-w-2xl mx-auto text-base md:text-lg text-white/70 font-sans leading-relaxed mb-4">

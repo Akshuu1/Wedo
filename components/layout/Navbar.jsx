@@ -62,7 +62,6 @@ export default function Navbar() {
                     className="relative group/link py-2"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-[6px] font-mono text-white/20">0{index + 1}</span>
                       <span className={`text-[10px] font-black tracking-[0.3em] uppercase transition-all
                         ${pathname === item.path ? 'text-white' : 'text-white/40 group-hover/link:text-white'}
                       `}>
@@ -119,7 +118,7 @@ export default function Navbar() {
                     className="flex items-center justify-between group/mob"
                   >
                     <div className="flex items-center gap-4">
-                      <span className="text-[8px] font-mono text-white/20">0{index + 1}</span>
+                      <span className="text-[8px] font-mono text-white/20">{index + 1}</span> 
                       <span className="text-2xl font-syne font-black text-white uppercase italic">
                         {item.name}
                       </span>
