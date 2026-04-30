@@ -1,127 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ═══════════════════════════════════════════════
+   WEDO — F1 × SPACE × FUTURISTIC DESIGN SYSTEM
+   "Fastest Creative Team in the Galaxy"
+═══════════════════════════════════════════════ */
+
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-  --font-syne: 'Syne', sans-serif;
-  --font-inter: 'Inter', sans-serif;
+  --bg:          #000000;
+  --accent:      #E8002D;
+  --accent-dim:  rgba(232, 0, 45, 0.15);
+  --accent-glow: rgba(232, 0, 45, 0.4);
+  --blue:        #1144ff;
+  --blue-dim:    rgba(17, 68, 255, 0.15);
+  --white:       #ffffff;
+  --muted:       rgba(255,255,255,0.4);
+  --faint:       rgba(255,255,255,0.06);
 }
+
+/* ─── Base ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-font-smoothing: antialiased; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  background: var(--bg);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  cursor: none;
 }
 
-/* Base Terminal Text */
-.terminal-line {
-  font-family: var(--font-mono);
-  font-size: 8px;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 0.3em;
+/* ─── Custom Scrollbar ──────────────────────────── */
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: var(--accent); }
+
+/* ─── CRT Scanlines overlay ─────────────────────── */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(255,255,255,0.008) 2px,
+    rgba(255,255,255,0.008) 4px
+  );
+  z-index: 9000;
+  pointer-events: none;
+}
+
+/* ─── HUD Grid overlay ──────────────────────────── */
+.hud-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* ─── Clip Panels ───────────────────────────────── */
+.clip-panel {
+  position: relative;
+  background: rgba(255,255,255,0.018);
+  border: 1px solid rgba(255,255,255,0.07);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  clip-path: polygon(0% 18px, 18px 0%, 100% 0%, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0% 100%);
+  transition: border-color 0.4s ease, background 0.4s ease;
+}
+.clip-panel:hover {
+  border-color: rgba(232,0,45,0.35);
+  background: rgba(232,0,45,0.025);
+}
+.clip-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 36px; height: 1px;
+  background: var(--accent);
+  opacity: 0.7;
+}
+.clip-panel::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 36px; height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* ─── Red accent panel variant ──────────────────── */
+.clip-panel-red {
+  background: rgba(232,0,45,0.05);
+  border-color: rgba(232,0,45,0.25);
+}
+.clip-panel-red::before { background: var(--accent); opacity: 1; }
+
+/* ─── CTA Button ────────────────────────────────── */
+.clip-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #fff;
+  padding: 1rem 2.4rem;
+  font-weight: 800;
+  font-size: 9px;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   white-space: nowrap;
+  overflow: hidden;
+}
+.clip-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
+}
+.clip-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px var(--accent-glow), 0 8px 40px rgba(232,0,45,0.25);
+  color: #fff;
+}
+.clip-button:hover::after { transform: scaleX(1); }
+
+/* ─── Telemetry Tag ─────────────────────────────── */
+.telemetry-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+.telemetry-line::before {
+  content: '';
+  display: block;
+  width: 4px; height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+  flex-shrink: 0;
+  animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* Gamified Lag/Glitch Effect */
+/* ─── Text Outline ──────────────────────────────── */
+.text-outline {
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.18);
+  color: transparent !important;
+}
+.text-outline-red {
+  -webkit-text-stroke: 1px var(--accent);
+  color: transparent !important;
+}
+
+/* ─── Accent Line ───────────────────────────────── */
+.accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.accent-line-center {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* ─── Speed Bar ─────────────────────────────────── */
+.speed-bar {
+  height: 2px;
+  background: rgba(255,255,255,0.05);
+  overflow: hidden;
+  position: relative;
+}
+.speed-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #ff4466);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ─── Service Card Hover Line ───────────────────── */
+.expand-line {
+  height: 1px;
+  width: 2rem;
+  background: rgba(255,255,255,0.2);
+  transition: width 0.5s ease, background 0.5s ease;
+}
+.group:hover .expand-line {
+  width: 4rem;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+/* ─── Animations ────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.5); box-shadow: 0 0 12px var(--accent); }
+}
+
 @keyframes lag-glitch {
-  0% { transform: translate(0); text-shadow: none; }
-  10% { transform: translate(-2px, 1px); text-shadow: 2px 0 #ff0000, -2px 0 #00ff00; }
-  15% { transform: translate(2px, -1px); text-shadow: none; }
-  20% { transform: translate(0); }
-  100% { transform: translate(0); }
+  0%, 90%, 100% { transform: translate(0); clip-path: none; }
+  91%  { transform: translate(-3px, 1px); clip-path: inset(10% 0 40% 0); }
+  93%  { transform: translate(3px, -1px); clip-path: inset(50% 0 10% 0); color: var(--accent); }
+  95%  { transform: translate(0); clip-path: none; }
+}
+
+@keyframes warp {
+  0%   { transform: scaleY(0) translateY(-50%); opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: scaleY(20) translateY(-50%); opacity: 0; }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px var(--accent-glow); }
+  50%       { box-shadow: 0 0 30px var(--accent-glow), 0 0 60px rgba(232,0,45,0.2); }
 }
 
 .lag-text {
   display: inline-block;
-  animation: lag-glitch 4s infinite step-end;
+  animation: lag-glitch 7s infinite step-end;
 }
 
-/* Scanlines for cinematic CRT feel */
-.scanlines {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%,
-    rgba(0, 0, 0, 0.1) 50%
-  ),
-  linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.02),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 255, 0.02)
-  );
-  background-size: 100% 4px, 3px 100%;
-  z-index: 1000;
-  pointer-events: none;
-  opacity: 0.15;
+.float-anim {
+  animation: float-y 4s ease-in-out infinite;
 }
 
-/* HUD Grid Overlay */
-.hud-grid {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
+.glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
 }
 
-/* Clip Corner Panels */
-.clip-panel {
-  position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  clip-path: polygon(
-    0% 20px, 20px 0%, 100% 0%, 100% calc(100% - 20px), 
-    calc(100% - 20px) 100%, 0% 100%
-  );
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50%       { opacity: 0.8; transform: scale(1.3); }
 }
 
-.clip-panel::after {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 40px; height: 1px;
-  background: rgba(255, 255, 255, 0.2);
+/* ─── Responsive Utilities ──────────────────────── */
+.section-gap { padding-block: clamp(3.5rem, 8vw, 10rem); }
+
+@media (max-width: 768px) {
+  .clip-panel {
+    clip-path: polygon(0% 12px, 12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%);
+  }
 }
 
-.clip-button {
-  position: relative;
-  background: white;
-  color: black;
-  padding: 1.25rem 3rem;
-  font-weight: 900;
-  font-size: 10px;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-  border: none;
-  cursor: pointer;
+.heading-safe {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
 }
 
-.clip-button:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 10px 30px rgba(255,255,255,0.2);
-  background: #f0f0f0;
-}
-
-/* Space Hero Typography */
-.text-space-hero {
-  font-family: var(--font-syne);
-  font-weight: 900;
-  font-size: clamp(3rem, 12vw, 10rem);
-  text-transform: uppercase;
-  letter-spacing: -0.05em;
-}
-
-/* Hide scrollbar but allow scrolling */
-::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

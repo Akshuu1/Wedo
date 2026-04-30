@@ -44,7 +44,7 @@ export default function ProjectPage() {
       <div className="max-w-screen-xl mx-auto relative z-10 pointer-events-auto">
         <div className="flex items-center gap-6 mb-12">
           <Link href="/work" className="text-white/40 hover:text-white transition-colors flex items-center gap-2">
-             <span className="font-mono text-[9px] uppercase tracking-widest">← Back to Work</span>
+             <span className="font-mono text-[11px] uppercase tracking-widest">← Back to Work</span>
           </Link>
         </div>
 
@@ -54,7 +54,7 @@ export default function ProjectPage() {
             animate={{ opacity: 1, x: 0 }}
           >
             <div className="flex items-center gap-4 mb-8">
-              <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.4em]">Project Case Study // {project.year}</span>
+              <span className="text-[11px] font-mono text-white/40 uppercase tracking-[0.4em]">Project Case Study // {project.year}</span>
             </div>
             <h1 className="text-6xl md:text-8xl font-syne font-black text-white uppercase italic leading-[0.85] mb-12 lag-text">
                {project.title}
@@ -65,12 +65,12 @@ export default function ProjectPage() {
             
             <div className="flex flex-wrap gap-4 mb-16">
               {project.tags.map(tag => (
-                <span key={tag} className="px-4 py-2 border border-white/10 text-white/40 font-mono text-[8px] uppercase tracking-widest">{tag}</span>
+                <span key={tag} className="px-4 py-2 border border-white/10 text-white/40 font-mono text-[10px] uppercase tracking-widest">{tag}</span>
               ))}
             </div>
 
             <div className="clip-panel p-10 bg-white/[0.02]">
-              <div className="text-white/20 font-mono text-[8px] mb-4 uppercase tracking-widest">The Result</div>
+              <div className="text-white/20 font-mono text-[10px] mb-4 uppercase tracking-widest">The Result</div>
               <p className="text-white text-lg font-syne italic">{project.outcome}</p>
             </div>
           </motion.div>

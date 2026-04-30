@@ -1,70 +1,96 @@
 'use client'
 
-import HouseScene from '@/components/canvas/HouseScene'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 const PROJECTS = [
-  { id: 'tech-nexus', t: "TechNexus Platform", d: "A high-speed dashboard built for real-time data tracking and clear business insights.", type: "WEBSITE", year: "2026" },
-  { id: 'novastream', t: "NovaStream Site", d: "A modern, cinematic website designed for a leading media company.", type: "DESIGN", year: "2025" },
-  { id: 'zeropoint', t: "ZeroPoint Branding", d: "A full brand identity and website for a new fintech startup.", type: "BRANDING", year: "2026" }
+  {
+    id: 'project-1',
+    title: 'Aero Dynamics',
+    category: 'Web Design',
+    year: '2024',
+    tags: ['Next.js', 'Three.js', 'Framer']
+  },
+  {
+    id: 'project-2',
+    title: 'Neon Pulse',
+    category: 'Brand Identity',
+    year: '2023',
+    tags: ['Logo', 'Brand', 'Design']
+  },
+  {
+    id: 'project-3',
+    title: 'Stellar App',
+    category: 'UI/UX Design',
+    year: '2023',
+    tags: ['Mobile', 'UI', 'UX']
+  },
+  {
+    id: 'project-4',
+    title: 'Void Studio',
+    category: 'E-Commerce',
+    year: '2024',
+    tags: ['Shopify', 'Web', 'Dev']
+  }
 ]
 
 export default function WorkPage() {
   return (
-    <main className="relative min-h-screen bg-black pt-64 pb-24 px-10 md:px-24 z-10 overflow-hidden">
+    <main className="relative min-h-screen bg-black pt-40 md:pt-64 pb-24 px-6 md:px-24 z-10 overflow-hidden">
       <div className="scanlines" />
-      <HouseScene />
 
-      <div className="max-w-screen-xl mx-auto relative z-10 pointer-events-auto">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex items-center gap-6 mb-12">
           <div className="w-12 h-[1px] bg-white/40" />
-          <span className="text-white/40 font-mono text-[9px] tracking-[0.5em] uppercase font-bold">Our Work</span>
+          <span className="text-white/60 font-mono text-[11px] tracking-[0.5em] uppercase font-bold">Protocol_04 // Project_Archive</span>
         </div>
 
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-7xl md:text-9xl font-syne font-black uppercase leading-[0.8] mb-32 text-white italic"
+          className="text-[clamp(1.4rem,6vw,5.5rem)] md:text-[clamp(3rem,8vw,7rem)] font-syne font-black uppercase leading-tight mb-20 md:mb-32 italic text-center"
         >
-          OUR<br/>
-          <span className="text-white/20">WORK.</span>
+          <span className="text-white">OUR </span>
+          <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', color: 'transparent' }}>WORK.</span>
         </motion.h1>
 
-        {/* Project Grid - NO SCRAMBLE */}
-        <div className="grid grid-cols-1 gap-12">
+        <div className="flex flex-col border-t border-white/10">
           {PROJECTS.map((project, i) => (
-            <Link key={project.id} href={`/work/${project.id}`}>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="group relative clip-panel p-10 md:p-16 hover:bg-white/5 transition-all cursor-pointer border border-white/10"
-              >
-                <div className="hud-grid opacity-10" />
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-6">
-                      <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.4em]">{project.type} // {project.year}</span>
-                      <div className="w-8 h-[1px] bg-white/10" />
-                    </div>
-                    <h3 className="text-4xl md:text-6xl font-syne font-black text-white uppercase italic mb-4 group-hover:translate-x-4 transition-transform duration-500">
-                      {project.t}
-                    </h3>
-                    <p className="text-white/40 text-lg md:text-xl font-sans italic max-w-xl">{project.d}</p>
-                  </div>
-                  <div className="w-16 h-16 border border-white/20 flex items-center justify-center text-white/20 font-mono text-xs group-hover:border-white group-hover:text-white transition-all rounded-full group-hover:rotate-45">
-                    →
-                  </div>
-                </div>
+            <motion.div 
+              key={project.id}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Link href={`/work/${project.id}`} className="group relative py-12 md:py-20 flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 hover:px-8 transition-all duration-500 hover:bg-white/[0.01]">
+                <div className="absolute left-0 top-0 w-[2px] h-0 bg-[#E8002D] group-hover:h-full transition-all duration-500" />
                 
-                <div className="absolute top-4 right-4 flex gap-2">
-                  <div className="w-1 h-1 bg-white/20" />
-                  <div className="w-1 h-1 bg-white/20" />
-                  <div className="w-1 h-1 bg-white/20 animate-pulse" />
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-4">
+                    <span className="font-mono text-[#E8002D] text-[10px] tracking-widest">0{i+1}</span>
+                    <div className="flex gap-2">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-[10px] font-mono text-white/20 uppercase tracking-widest">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <h2 className="text-4xl md:text-7xl font-syne font-black text-white uppercase italic group-hover:tracking-widest transition-all duration-500 heading-safe">
+                    {project.title}
+                  </h2>
                 </div>
-              </motion.div>
-            </Link>
+
+                <div className="flex items-center gap-8 md:gap-16 mt-8 md:mt-0">
+                  <div className="text-right">
+                    <div className="text-[10px] font-mono text-white/60 uppercase tracking-widest mb-1">{project.category}</div>
+                    <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">{project.year}</div>
+                  </div>
+                  <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#E8002D] group-hover:border-[#E8002D] transition-all duration-500">
+                    <span className="text-xl text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

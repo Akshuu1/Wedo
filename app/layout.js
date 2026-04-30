@@ -54,42 +54,77 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": "ProfessionalService",
       "@id": "https://wedo.space/#organization",
       "name": "WEDO",
       "url": "https://wedo.space",
       "logo": "https://wedo.space/og-image.png",
-      "description": "WEDO is a digital agency specialising in website design, social media management, UI/UX design, and brand identity.",
+      "image": "https://wedo.space/og-image.png",
+      "description": "WEDO is a high-performance creative agency in New Delhi, India. We specialize in cutting-edge Next.js website development, 3D web design, brand identity, and data-driven social media management.",
       "foundingDate": "2024",
-      "areaServed": "India",
-      "serviceType": ["Website Design", "UI/UX Design", "Social Media Management", "Brand Identity", "SEO", "Web Development"],
-      "sameAs": ["https://instagram.com/wedospace", "https://github.com/Akshuu1/Wedo"]
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New Delhi",
+        "addressCountry": "IN"
+      },
+      "areaServed": ["India", "United States", "United Kingdom", "Global"],
+      "priceRange": "$$$",
+      "knowsAbout": [
+        "Next.js Development",
+        "3D Web Design",
+        "React",
+        "Three.js",
+        "GSAP Animations",
+        "Framer Motion",
+        "Social Media Strategy",
+        "Brand Identity Design",
+        "UI/UX Design"
+      ],
+      "sameAs": [
+        "https://instagram.com/wedospace",
+        "https://github.com/Akshuu1/Wedo"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@wedo.com",
+        "contactType": "customer service"
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://wedo.space/#website",
       "url": "https://wedo.space",
-      "name": "WEDO",
-      "publisher": { "@id": "https://wedo.space/#organization" }
+      "name": "WEDO Creative Agency",
+      "publisher": { "@id": "https://wedo.space/#organization" },
+      "inLanguage": "en-IN"
     },
     {
       "@type": "Service",
-      "name": "Website Design & Development",
+      "@id": "https://wedo.space/#webdesign",
+      "name": "Next.js Website Design & Development",
       "provider": { "@id": "https://wedo.space/#organization" },
-      "description": "Custom website design and development using Next.js and modern technologies for businesses and startups in India."
+      "description": "Custom, high-speed website design and development using Next.js, React, and Three.js. We build conversion-optimized, cinematic websites for bold brands."
     },
     {
       "@type": "Service",
-      "name": "Social Media Management",
+      "@id": "https://wedo.space/#branding",
+      "name": "Brand Identity Design",
       "provider": { "@id": "https://wedo.space/#organization" },
-      "description": "Social media strategy, content creation, and Instagram/LinkedIn management for brands."
+      "description": "Comprehensive brand identity creation including logos, typography, color palettes, and visual guidelines that stand out in crowded markets."
+    },
+    {
+      "@type": "Service",
+      "@id": "https://wedo.space/#socialmedia",
+      "name": "Social Media Management & Strategy",
+      "provider": { "@id": "https://wedo.space/#organization" },
+      "description": "End-to-end social media management for Instagram and LinkedIn. We create viral content, manage engagement, and drive business growth through social channels."
     }
   ]
-}
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${syne.variable} ${inter.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${syne.variable} ${inter.variable}`} data-scroll-behavior="smooth">
       <head>
         <script
           type="application/ld+json"

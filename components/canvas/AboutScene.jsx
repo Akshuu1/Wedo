@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState, useMemo } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { PerspectiveCamera, Stars } from '@react-three/drei'
-import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
+
 import * as THREE from 'three'
 
 /* ─── Floating Geometric Ring ─────────────────────────────── */
@@ -123,10 +123,6 @@ function Scene() {
       <GridFloor />
       <DepthSphere />
       {rings.map((r, i) => <FloatingRing key={i} {...r} />)}
-      <EffectComposer disableNormalPass multisampling={0}>
-        <Bloom luminanceThreshold={0.5} intensity={1.5} radius={0.6} />
-        <Vignette eskil={false} offset={0.1} darkness={1.6} />
-      </EffectComposer>
     </>
   )
 }
