@@ -61,6 +61,7 @@ export default function ProjectConfigurator() {
                   key={s.id}
                   type="button"
                   onClick={() => toggleService(s.id)}
+                  aria-pressed={isActive}
                   className={`relative z-20 px-4 py-3 font-mono text-[11px] uppercase tracking-widest border transition-all duration-300 ${
                     isActive 
                       ? 'border-[#E8002D] bg-[#E8002D]/10 text-white shadow-[inset_0_0_15px_rgba(232,0,45,0.2)]' 
@@ -93,7 +94,10 @@ export default function ProjectConfigurator() {
           </div>
 
           <Link href={`/contact?services=${selected.join(',')}`}>
-            <button className="w-full bg-white text-black py-4 font-bold font-mono text-[11px] tracking-[0.3em] uppercase hover:bg-[#E8002D] hover:text-white transition-colors duration-300 flex items-center justify-center gap-3">
+            <button 
+              aria-label="Initialize Project with selected modules"
+              className="w-full bg-white text-black py-4 font-bold font-mono text-[11px] tracking-[0.3em] uppercase hover:bg-[#E8002D] hover:text-white transition-colors duration-300 flex items-center justify-center gap-3"
+            >
               Initialize Project
               <span className="text-lg leading-none">↗</span>
             </button>

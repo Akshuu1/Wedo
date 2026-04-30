@@ -260,7 +260,11 @@ body {
 }
 
 /* ─── Responsive Utilities ──────────────────────── */
-.section-gap { padding-block: clamp(3.5rem, 8vw, 10rem); }
+.section-gap { 
+  padding-block: clamp(3.5rem, 8vw, 10rem); 
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
+}
 
 @media (max-width: 768px) {
   .clip-panel {

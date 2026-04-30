@@ -230,7 +230,7 @@ export default function CarLoader({ progress }) {
         onCreated={({ gl }) => {
           gl.shadowMap.type = THREE.PCFShadowMap
         }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
       >
         <Suspense fallback={null}>
           <Scene progress={progress} />

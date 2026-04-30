@@ -27,6 +27,7 @@ function ProjectCard({ url, title, pos, scale, ...props }) {
       <Image 
         ref={ref} 
         url={url} 
+        alt={title}
         scale={scale} 
         onPointerOver={() => hover(true)} 
         onPointerOut={() => hover(false)}

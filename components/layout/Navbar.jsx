@@ -124,6 +124,7 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Menu"
             className="md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5 z-[10002]"
           >
             <motion.div animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 7 : 0 }} className="w-6 h-[1.5px] bg-white transform origin-center" />
@@ -157,7 +158,7 @@ export default function Navbar() {
                     exit="exit"
                     transition={{ delay: 0.2 + index * 0.1 }}
                   >
-                    <Link href={item.path} onClick={() => setIsOpen(false)} className="group flex items-baseline gap-4 w-fit">
+                    <Link href={item.path} onClick={() => setIsOpen(false)} aria-label={`Navigate to ${item.name}`} className="group flex items-baseline gap-4 w-fit">
                       <span className="text-[12px] md:text-[12px] font-mono text-white/30">0{index + 1}</span> 
                       <span className={`text-[clamp(2.5rem,12vw,5rem)] md:text-6xl font-syne font-black uppercase italic transition-colors duration-300 ${pathname === item.path ? 'text-white' : 'text-white/40 group-hover:text-white'}`}>
                         {item.name}

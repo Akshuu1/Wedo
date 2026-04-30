@@ -176,6 +176,7 @@ export default function SoleChatbot() {
       {/* ── Floating Toggle Button ── */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close Chat" : "Open Chat"}
         className="fixed bottom-6 right-6 z-[9998] w-14 h-14 rounded-full flex items-center justify-center border border-white/10 shadow-[0_0_30px_rgba(232,0,45,0.15)] cursor-pointer"
         style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)' }}
         whileHover={{ scale: 1.08, boxShadow: '0 0 40px rgba(232,0,45,0.3)' }}
@@ -228,6 +229,7 @@ export default function SoleChatbot() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
+                aria-label="Close Chat Window"
                 className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeOpacity="0.5">
