@@ -1,12 +1,6 @@
 import OpenAI from 'openai';
 import { NextResponse } from 'next/server';
 
-// Initialize Groq client (using OpenAI SDK for compatibility)
-const openai = new OpenAI({
-  apiKey: process.env.GROQ_API_KEY,
-  baseURL: 'https://api.groq.com/openai/v1',
-});
-
 const SYSTEM_PROMPT = `You are Sole, the AI assistant for the WEDO agency. 
 Your tone should be professional, slightly cinematic, concise, and helpful. 
 Use formatting like bolding for keywords to make your responses easy to read. 
@@ -25,6 +19,12 @@ If a user asks a general conversation question, respond politely but guide them 
 
 export async function POST(request) {
   try {
+    // Initialize Groq client (using OpenAI SDK for compatibility)
+    const openai = new OpenAI({
+      apiKey: process.env.GROQ_API_KEY || 'dummy_key_for_build',
+      baseURL: 'https://api.groq.com/openai/v1',
+    });
+
     if (!process.env.GROQ_API_KEY) {
       console.error('CRITICAL: GROQ_API_KEY is missing from environment variables.');
       return NextResponse.json(
