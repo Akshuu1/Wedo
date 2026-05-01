@@ -142,7 +142,7 @@ export default function Navbar() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="fixed inset-0 z-[10000] bg-black origin-top flex flex-col justify-between p-10"
+            className="fixed inset-0 z-[10000] bg-black origin-top flex flex-col justify-between p-6 md:p-10"
           >
             {/* Background Texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
@@ -160,7 +160,7 @@ export default function Navbar() {
                   >
                     <Link href={item.path} onClick={() => setIsOpen(false)} aria-label={`Navigate to ${item.name}`} className="group flex items-baseline gap-4 w-fit">
                       <span className="text-[12px] md:text-[12px] font-mono text-white/30">0{index + 1}</span> 
-                      <span className={`text-[clamp(2.5rem,12vw,5rem)] md:text-6xl font-syne font-black uppercase italic transition-colors duration-300 ${pathname === item.path ? 'text-white' : 'text-white/40 group-hover:text-white'}`}>
+                      <span className={`text-[clamp(2rem,10vw,5rem)] md:text-6xl font-syne font-black uppercase italic transition-colors duration-300 ${pathname === item.path ? 'text-white' : 'text-white/40 group-hover:text-white'}`}>
                         {item.name}
                       </span>
                     </Link>

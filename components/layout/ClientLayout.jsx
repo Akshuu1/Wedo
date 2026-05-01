@@ -36,7 +36,7 @@ export default function ClientLayout({ children }) {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-black">
+    <div className="relative min-h-screen bg-black overflow-x-hidden w-full">
       {/* Global 3D Background — always mounted so car is visible during load */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Suspense fallback={null}>

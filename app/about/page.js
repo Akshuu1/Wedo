@@ -26,13 +26,13 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex items-center gap-6 mb-12">
           <div className="w-12 h-[1px] bg-white/40" />
-          <span className="text-white/40 font-mono text-[11px] tracking-[0.5em] uppercase font-bold">Protocol_01 // Operational_Intel</span>
+          <span className="text-white/40 font-mono text-[11px] tracking-widest md:tracking-[0.5em] uppercase font-bold text-center md:text-left">Protocol_01 // Operational_Intel</span>
         </div>
 
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-[clamp(1.4rem,6vw,5.5rem)] md:text-[clamp(3rem,8vw,7rem)] font-syne font-black uppercase leading-tight mb-20 md:mb-32 italic text-center"
+          className="text-[clamp(2rem,8vw,7rem)] font-syne font-black uppercase leading-[1.1] md:leading-tight mb-20 md:mb-32 italic text-center"
         >
           <span className="text-white">WHO WE </span>
           <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', color: 'transparent' }}>ARE.</span>
@@ -45,7 +45,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, x: 0 }}
             className="flex flex-col gap-10"
           >
-            <h2 className="text-4xl md:text-5xl font-syne font-black text-white uppercase italic leading-[0.9] heading-safe">
+            <h2 className="text-4xl md:text-5xl font-syne font-black text-white uppercase italic leading-[1.1] md:leading-[0.9] heading-safe">
               WE ARE A DEDICATED TEAM THAT CREATES <span className="text-[#E8002D]">STUNNING</span> DIGITAL EXPERIENCES.
             </h2>
             <div className="w-24 h-[2px] bg-[#E8002D]" />

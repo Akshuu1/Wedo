@@ -35,13 +35,13 @@ export default function ContactPage() {
       <div className="max-w-4xl mx-auto relative z-10 pointer-events-auto">
         <div className="flex items-center gap-6 mb-12">
           <div className="w-12 h-[1px] bg-white/40" />
-          <span className="text-white/40 font-mono text-[11px] tracking-[0.5em] uppercase font-bold">Protocol_09 // Mission_Request</span>
+          <span className="text-white/40 font-mono text-[11px] tracking-widest md:tracking-[0.5em] uppercase font-bold text-center md:text-left">Protocol_09 // Mission_Request</span>
         </div>
 
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-[clamp(1.4rem,6vw,5.5rem)] md:text-[clamp(3rem,8vw,7rem)] font-syne font-black uppercase leading-tight mb-16 md:mb-24 italic text-center"
+          className="text-[clamp(2rem,8vw,7rem)] font-syne font-black uppercase leading-[1.1] md:leading-tight mb-16 md:mb-24 italic text-center"
         >
           <span className="text-white">INITIATE </span>
           <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', color: 'transparent' }}>CONTACT.</span>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                 className="space-y-12"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-2 md:gap-4">
                     <label className="text-[10px] font-mono text-white/30 uppercase tracking-[0.3em]">Your Name</label>
                     <input 
                       required
@@ -85,7 +85,7 @@ export default function ContactPage() {
                       placeholder="ENTER IDENTITY..."
                     />
                   </div>
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-2 md:gap-4">
                     <label className="text-[10px] font-mono text-white/30 uppercase tracking-[0.3em]">Email Address</label>
                     <input 
                       required
@@ -98,7 +98,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2 md:gap-4">
                   <label className="text-[10px] font-mono text-white/30 uppercase tracking-[0.3em]">Project Details</label>
                   <textarea 
                     required

@@ -127,12 +127,12 @@ export default function Footer() {
 
           </div>
 
-          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-[10px] font-mono text-white/50 uppercase tracking-[0.3em]">
+          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
+            <div className="text-[10px] font-mono text-white/50 uppercase tracking-[0.3em] text-center md:text-left">
               © {currentYear} WEDO STUDIO. ALL SYSTEMS SECURE.
             </div>
             
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                 <span className="text-[10px] font-mono text-white/60 uppercase tracking-widest">SYSTEM ONLINE</span>

@@ -14,6 +14,12 @@ const inter = Inter({
   display: 'swap',
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata = {
   title: "WEDO | Website Design, Social Media & Branding Agency India",
   description: "WEDO is a high-performance digital agency offering website design, UI/UX design, social media management, brand identity, and SEO services. We build bold digital assets for businesses that want to dominate online.",

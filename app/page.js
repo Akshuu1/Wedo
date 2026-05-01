@@ -71,13 +71,13 @@ export default function Home() {
           {/* Agency tag */}
           <motion.div {...fadeUp(0.2)} className="flex items-center justify-center gap-4 mb-10">
             <div className="h-[1px] w-10 bg-white/20" />
-            <span className="font-mono text-[11px] tracking-[0.55em] text-white/45 uppercase">Creative Agency / EST. 2024</span>
+            <span className="font-mono text-[11px] tracking-widest md:tracking-[0.55em] text-white/45 uppercase text-center">Creative Agency / EST. 2024</span>
             <div className="h-[1px] w-10 bg-white/20" />
           </motion.div>
 
           {/* Big headline */}
-          <h1 className="font-syne font-black uppercase leading-tight tracking-[-0.03em] mb-10 text-center"
-              style={{ fontSize: 'clamp(1.5rem, 8vw, 7.5rem)' }}>
+          <h1 className="font-syne font-black uppercase leading-[1.1] md:leading-tight tracking-[-0.03em] mb-10 text-center"
+              style={{ fontSize: 'clamp(2rem, 8vw, 7.5rem)' }}>
             <motion.div {...fadeUp(0.3)} className="italic">
               <span className="text-white">WE BUILD </span>
               <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', color: 'transparent' }}>BRANDS</span>
@@ -88,7 +88,7 @@ export default function Home() {
           <motion.p {...fadeUp(0.75)} className="max-w-lg mx-auto text-white/55 text-base md:text-lg font-sans leading-relaxed mb-2">
             A creative studio crafting <strong className="text-white font-semibold">websites, brands</strong> and digital experiences that set you apart from the competition
           </motion.p>
-          <motion.p {...fadeUp(0.85)} className="font-mono text-[11px] text-white/25 tracking-[0.45em] uppercase mb-14">
+          <motion.p {...fadeUp(0.85)} className="font-mono text-[11px] text-white/25 tracking-widest md:tracking-[0.45em] uppercase mb-14 text-center">
             Strategy&nbsp;&nbsp;·&nbsp;&nbsp;Design&nbsp;&nbsp;·&nbsp;&nbsp;Development
           </motion.p>
 
@@ -129,7 +129,7 @@ export default function Home() {
 
       {/* ═══════ STATS BAR ═══════════════════════════ */}
       <section className="relative z-10 border-y border-white/[0.06] bg-black/60 backdrop-blur-xl">
-        <div className="max-w-screen-xl mx-auto px-6 md:px-16 py-8 grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-0 md:divide-x divide-white/[0.06]">
+        <div className="max-w-screen-xl mx-auto px-6 md:px-16 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-12 sm:gap-y-8 md:gap-0 md:divide-x divide-white/[0.06]">
           {STATS.map((s, i) => (
             <motion.div
               key={i}
@@ -162,7 +162,7 @@ export default function Home() {
               viewport={{ once: true }} transition={{ duration: 0.7 }}
             >
               <div className="telemetry-line mb-6 text-white/70 justify-center lg:justify-start">About Our Team</div>
-              <h2 className="font-syne font-black text-white uppercase italic leading-[0.88] tracking-tight mb-8 heading-safe text-center lg:text-left"
+              <h2 className="font-syne font-black text-white uppercase italic leading-[1.1] md:leading-[0.88] tracking-tight mb-8 heading-safe text-center lg:text-left"
                   style={{ fontSize: 'clamp(2.2rem, 7vw, 5.5rem)' }}>
                 WHO WE<br />
                 <span style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.15)', color: 'transparent' }}>ARE</span>
@@ -218,9 +218,9 @@ export default function Home() {
 
               <div className="mt-10 pt-8 border-t border-white/[0.06]">
                 <div className="font-mono text-[11px] text-white/70 uppercase tracking-widest mb-3">Our Stack</div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3 md:gap-2">
                   {['Next.js', 'React', 'Framer', 'Figma', 'Three.js', 'GSAP'].map((tech) => (
-                    <span key={tech} className="font-mono text-[10px] text-white/80 border border-white/20 bg-white/[0.03] px-3 py-1 hover:border-[#E8002D]/40 hover:text-white transition-all">
+                    <span key={tech} className="font-mono text-[11px] md:text-[10px] text-white/80 border border-white/20 bg-white/[0.03] px-4 py-2 md:px-3 md:py-1 hover:border-[#E8002D]/40 hover:text-white transition-all">
                       {tech}
                     </span>
                   ))}
@@ -246,7 +246,7 @@ export default function Home() {
             className="text-center mb-16 md:mb-20 relative z-10 px-4"
           >
             <div className="telemetry-line justify-center mb-6 text-white/70">Efficiency Analysis</div>
-            <h2 className="font-syne font-black text-white uppercase italic leading-tight tracking-tight text-center"
+            <h2 className="font-syne font-black text-white uppercase italic leading-[1.1] md:leading-tight tracking-tight text-center"
                 style={{ fontSize: 'clamp(1.2rem, 6vw, 5rem)' }}>
               WEDO <span className="text-[#E8002D]">VS</span> <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.15)', color: 'transparent' }}>TRADITIONAL</span>
             </h2>
@@ -380,7 +380,7 @@ export default function Home() {
             viewport={{ once: true }} className="mb-14"
           >
             <div className="telemetry-line mb-5 text-white/70 justify-center md:justify-start">What We Do</div>
-            <h2 className="font-syne font-black text-white uppercase italic leading-[0.88] tracking-tight heading-safe text-center md:text-left"
+            <h2 className="font-syne font-black text-white uppercase italic leading-[1.1] md:leading-[0.88] tracking-tight heading-safe text-center md:text-left"
                 style={{ fontSize: 'clamp(2rem, 8vw, 6rem)' }}>
               WHAT WE DO
             </h2>
@@ -424,7 +424,7 @@ export default function Home() {
       <section className="relative z-10 section-gap px-6 md:px-16 border-t border-white/[0.05]">
         <div className="max-w-screen-xl mx-auto">
           <div className="telemetry-line mb-5 text-white/70 justify-center md:justify-start">Our Process</div>
-          <h2 className="font-syne font-black text-white uppercase italic leading-[0.88] tracking-tight mb-16 heading-safe text-center md:text-left"
+          <h2 className="font-syne font-black text-white uppercase italic leading-[1.1] md:leading-[0.88] tracking-tight mb-16 heading-safe text-center md:text-left"
               style={{ fontSize: 'clamp(2rem, 7vw, 6rem)' }}>
             HOW WE WORK
           </h2>

@@ -73,13 +73,13 @@ export default function ServicesPage() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex items-center gap-6 mb-12">
           <div className="w-12 h-[1px] bg-white/40" />
-          <span className="text-white/60 font-mono text-[11px] tracking-[0.5em] uppercase font-bold">What We Offer</span>
+          <span className="text-white/60 font-mono text-[11px] tracking-widest md:tracking-[0.5em] uppercase font-bold text-center md:text-left">What We Offer</span>
         </div>
 
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-[clamp(1.4rem,6vw,5.5rem)] md:text-[clamp(3rem,8vw,7rem)] font-syne font-black uppercase leading-tight mb-20 md:mb-32 italic text-center"
+          className="text-[clamp(2rem,8vw,7rem)] font-syne font-black uppercase leading-[1.1] md:leading-tight mb-20 md:mb-32 italic text-center"
         >
           <span className="text-white">OUR </span>
           <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', color: 'transparent' }}>SERVICES.</span>
@@ -99,9 +99,9 @@ export default function ServicesPage() {
               
               <div className="flex justify-between items-start mb-12">
                 <span className="font-mono text-[#E8002D] text-xs font-bold tracking-widest">{service.num}</span>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-3 md:gap-2">
                   {service.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 border border-white/20 text-[10px] font-mono text-white/60 uppercase tracking-widest">{tag}</span>
+                    <span key={tag} className="px-4 py-2 md:px-3 md:py-1 border border-white/20 text-[11px] md:text-[10px] font-mono text-white/60 uppercase tracking-widest">{tag}</span>
                   ))}
                 </div>
               </div>
