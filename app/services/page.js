@@ -66,11 +66,11 @@ const SERVICES = [
 
 export default function ServicesPage() {
   return (
-    <main className="relative min-h-screen bg-black pt-40 md:pt-64 pb-24 px-6 md:px-24 overflow-hidden">
+    <main className="relative min-h-screen bg-black pt-40 md:pt-64 pb-24 px-6 md:px-16 xl:px-24 overflow-hidden">
       <div className="scanlines" />
       <Floating3D />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-screen-2xl mx-auto relative z-10">
         <div className="flex items-center gap-6 mb-12">
           <div className="w-12 h-[1px] bg-white/40" />
           <span className="text-white/60 font-mono text-[11px] tracking-widest md:tracking-[0.5em] uppercase font-bold text-center md:text-left">What We Offer</span>
@@ -79,7 +79,7 @@ export default function ServicesPage() {
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-[clamp(2rem,8vw,7rem)] font-syne font-black uppercase leading-[1.1] md:leading-tight mb-20 md:mb-32 italic text-center"
+          className="text-[clamp(2rem,8vw,7rem)] font-syne font-black uppercase leading-[1.1] md:leading-tight mb-20 md:mb-32 italic text-center lg:text-left"
         >
           <span className="text-white">OUR </span>
           <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', color: 'transparent' }}>SERVICES.</span>
@@ -115,7 +115,7 @@ export default function ServicesPage() {
               </p>
 
               <div className="mt-12 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button className="text-[10px] font-black text-white uppercase tracking-[0.4em] flex items-center gap-4">
+                <button className="text-[12px] font-black text-white uppercase tracking-[0.3em] flex items-center gap-4 hover:text-[#E8002D] transition-colors">
                   GET STARTED <span className="text-[#E8002D]">→</span>
                 </button>
               </div>

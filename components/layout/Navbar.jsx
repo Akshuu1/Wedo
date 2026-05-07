@@ -93,7 +93,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-6 left-0 w-full z-[10001] pointer-events-none px-6 flex justify-center"
       >
-        <div className="pointer-events-auto flex items-center justify-between bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 w-full max-w-4xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+        <div className="pointer-events-auto flex items-center justify-between bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 w-full max-w-5xl xl:max-w-7xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
           
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">

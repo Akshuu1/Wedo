@@ -47,70 +47,106 @@ export default function Home() {
       <div className="scanlines pointer-events-none" />
 
       {/* ═══════ HERO ════════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 md:px-12 pt-32 pb-20 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 xl:px-24 pt-28 pb-20 overflow-hidden">
 
-        {/* Radial glow behind text */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 60%, rgba(232,0,45,0.07) 0%, transparent 70%)' }}
+        {/* Radial glow */}
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 35% 50%, rgba(232,0,45,0.07) 0%, transparent 70%)' }}
         />
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 w-full max-w-6xl mx-auto">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 w-full max-w-screen-2xl mx-auto">
+          {/* Desktop split grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 xl:gap-20 items-center">
 
-          {/* ── Awards badge (top-right) ── */}
-          <motion.div
-            {...fadeUp(0.1)}
-            className="absolute top-0 right-0 hidden md:flex flex-col items-end gap-1 p-4"
-          >
-            <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 backdrop-blur-sm">
-              <div className="w-1.5 h-1.5 bg-[#E8002D] rounded-full animate-pulse" />
-              <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">Available for projects</span>
+            {/* LEFT — headline + CTAs */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+
+              {/* Agency tag */}
+              <motion.div {...fadeUp(0.2)} className="flex items-center gap-4 mb-10">
+                <div className="h-[1px] w-8 bg-[#E8002D]/60" />
+                <span className="font-mono text-[11px] tracking-[0.5em] text-white/40 uppercase">Creative Agency / EST. 2024</span>
+                <div className="h-[1px] w-8 bg-white/10 hidden lg:block" />
+              </motion.div>
+
+              {/* Big headline */}
+              <h1 className="font-syne font-black uppercase leading-[0.95] tracking-[-0.04em] mb-10 heading-safe"
+                  style={{ fontSize: 'clamp(3rem, 9vw, 9.5rem)' }}>
+                <motion.div {...fadeUp(0.3)} className="italic">
+                  <span className="text-white">WE BUILD </span>
+                  <span style={{ WebkitTextStroke: '2px rgba(255,255,255,0.15)', color: 'transparent' }}>BRANDS</span>
+                </motion.div>
+                <motion.div {...fadeUp(0.4)}>
+                  <span className="text-white">THAT </span>
+                  <span className="text-[#E8002D] italic">WIN.</span>
+                </motion.div>
+              </h1>
+
+              {/* Sub line */}
+              <motion.p {...fadeUp(0.65)} className="max-w-xl text-white/55 text-base md:text-xl leading-relaxed mb-3">
+                A creative studio crafting <strong className="text-white font-semibold">websites, brands</strong> and digital experiences that dominate the competition.
+              </motion.p>
+              <motion.p {...fadeUp(0.75)} className="font-mono text-[11px] text-white/25 tracking-[0.4em] uppercase mb-14">
+                Strategy&nbsp;·&nbsp;Design&nbsp;·&nbsp;Development
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div {...fadeUp(0.85)} className="flex flex-col sm:flex-row gap-4 items-center lg:items-start justify-center lg:justify-start">
+                <Link href="/work">
+                  <button className="clip-button w-56 py-[18px] glow-pulse">View Our Work →</button>
+                </Link>
+                <Link href="/contact">
+                  <button className="w-56 py-[18px] border border-white/15 text-white/70 font-mono text-[11px] tracking-[0.3em] uppercase hover:border-[#E8002D] hover:text-white transition-all duration-300">
+                    Start a Project
+                  </button>
+                </Link>
+              </motion.div>
             </div>
-          </motion.div>
 
-          {/* Agency tag */}
-          <motion.div {...fadeUp(0.2)} className="flex items-center justify-center gap-4 mb-10">
-            <div className="h-[1px] w-10 bg-white/20" />
-            <span className="font-mono text-[11px] tracking-widest md:tracking-[0.55em] text-white/45 uppercase text-center">Creative Agency / EST. 2024</span>
-            <div className="h-[1px] w-10 bg-white/20" />
-          </motion.div>
+            {/* RIGHT — live metrics panel (desktop only) */}
+            <motion.div {...fadeUp(0.5)} className="hidden lg:flex flex-col gap-4">
+              {/* Available badge */}
+              <div className="flex justify-end">
+                <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 backdrop-blur-sm">
+                  <div className="w-1.5 h-1.5 bg-[#E8002D] rounded-full animate-pulse shadow-[0_0_8px_#E8002D]" />
+                  <span className="font-mono text-[11px] text-white/50 uppercase tracking-widest">Available for Projects</span>
+                </div>
+              </div>
 
-          {/* Big headline */}
-          <h1 className="font-syne font-black uppercase leading-[1.1] md:leading-tight tracking-[-0.03em] mb-10 text-center"
-              style={{ fontSize: 'clamp(2rem, 8vw, 7.5rem)' }}>
-            <motion.div {...fadeUp(0.3)} className="italic">
-              <span className="text-white">WE BUILD </span>
-              <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', color: 'transparent' }}>BRANDS</span>
+              {/* Stats mini grid */}
+              <div className="clip-panel p-7 relative overflow-hidden">
+                <div className="hud-grid opacity-[0.025]" />
+                <div className="relative z-10">
+                  <div className="telemetry-line mb-6">Live_Metrics</div>
+                  <div className="grid grid-cols-2 gap-4">
+                    {STATS.map((s, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.9 + i * 0.1 }}
+                        className="border border-white/[0.06] p-5 hover:border-[#E8002D]/30 transition-colors duration-300"
+                      >
+                        <div className="font-syne font-black text-3xl text-white mb-1">{s.num}</div>
+                        <div className="font-mono text-[10px] text-white/30 tracking-widest uppercase leading-snug">{s.label}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Location line */}
+              <div className="flex items-center gap-3 px-1">
+                <div className="w-2 h-2 rounded-full bg-[#E8002D] animate-ping opacity-70" />
+                <span className="font-mono text-[10px] text-white/25 uppercase tracking-widest">New Delhi, India — Remote Worldwide</span>
+              </div>
             </motion.div>
-          </h1>
-
-          {/* Sub line */}
-          <motion.p {...fadeUp(0.75)} className="max-w-lg mx-auto text-white/55 text-base md:text-lg font-sans leading-relaxed mb-2">
-            A creative studio crafting <strong className="text-white font-semibold">websites, brands</strong> and digital experiences that set you apart from the competition
-          </motion.p>
-          <motion.p {...fadeUp(0.85)} className="font-mono text-[11px] text-white/25 tracking-widest md:tracking-[0.45em] uppercase mb-14 text-center">
-            Strategy&nbsp;&nbsp;·&nbsp;&nbsp;Design&nbsp;&nbsp;·&nbsp;&nbsp;Development
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div {...fadeUp(0.95)} className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <Link href="/work">
-              <button className="clip-button w-60 py-4 glow-pulse">
-                View Our Work →
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button className="w-60 py-4 border border-white/15 text-white/70 font-mono text-[11px] tracking-[0.3em] uppercase hover:border-[#E8002D] hover:text-white transition-all duration-300">
-                Start a Project
-              </button>
-            </Link>
-          </motion.div>
+          </div>
 
           {/* HUD corner decorations */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#E8002D]/30 pointer-events-none" />
-          <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#E8002D]/30 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-white/10 pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/10 pointer-events-none" />
+          <div className="absolute top-0 left-0 w-10 h-10 border-t border-l border-[#E8002D]/30 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-10 h-10 border-t border-r border-[#E8002D]/30 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-10 h-10 border-b border-l border-white/10 pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-10 h-10 border-b border-r border-white/10 pointer-events-none" />
         </motion.div>
 
         {/* Scroll indicator */}
@@ -127,9 +163,9 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ═══════ STATS BAR ═══════════════════════════ */}
-      <section className="relative z-10 border-y border-white/[0.06] bg-black/60 backdrop-blur-xl">
-        <div className="max-w-screen-xl mx-auto px-6 md:px-16 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-12 sm:gap-y-8 md:gap-0 md:divide-x divide-white/[0.06]">
+      {/* ═══════ STATS BAR — mobile only (desktop sees stats in hero) ════ */}
+      <section className="relative z-10 border-y border-white/[0.06] bg-black/60 backdrop-blur-xl lg:hidden">
+        <div className="max-w-screen-2xl mx-auto px-6 py-8 grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/[0.06]">
           {STATS.map((s, i) => (
             <motion.div
               key={i}
@@ -137,10 +173,10 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex flex-col items-center justify-center py-4 px-6 gap-1"
+              className="flex flex-col items-center justify-center py-6 px-4 gap-1"
             >
-              <span className="font-syne font-black text-3xl md:text-4xl text-white">{s.num}</span>
-              <span className="font-mono text-[11px] text-white/35 tracking-[0.3em] uppercase text-center">{s.label}</span>
+              <span className="font-syne font-black text-3xl text-white">{s.num}</span>
+              <span className="font-mono text-[10px] text-white/35 tracking-[0.3em] uppercase text-center">{s.label}</span>
             </motion.div>
           ))}
         </div>
@@ -152,8 +188,8 @@ export default function Home() {
       </section>
 
       {/* ═══════ WHO WE ARE ══════════════════════════ */}
-      <section className="relative z-10 section-gap px-6 md:px-16">
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="relative z-10 section-gap px-6 md:px-16 xl:px-24">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
 
           {/* Left — text */}
           <div>
@@ -232,8 +268,8 @@ export default function Home() {
       </section>
 
       {/* ═══════ COMPARISON ═════════════════════════ */}
-      <section className="relative z-10 section-gap px-6 md:px-16 border-t border-white/[0.05] bg-[#030303]">
-        <div className="max-w-screen-xl mx-auto relative">
+      <section className="relative z-10 section-gap px-6 md:px-16 xl:px-24 border-t border-white/[0.05] bg-[#030303]">
+        <div className="max-w-screen-2xl mx-auto relative">
           
           {/* Animated Background Glows */}
           <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#E8002D]/[0.03] rounded-full blur-[120px] pointer-events-none" />
@@ -252,17 +288,17 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 items-stretch">
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch">
             
-            {/* VS Badge */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
+            {/* VS Badge — desktop only (absolute between two cols) */}
+            <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-20 h-20 items-center justify-center">
               <motion.div 
                 animate={{ scale: [1, 1.1, 1], rotate: [0, 90, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
                 className="absolute inset-0 border border-[#E8002D]/40 rounded-full"
               />
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-black border border-white/10 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(232,0,45,0.2)]">
-                <span className="font-syne font-black text-[#E8002D] text-lg md:text-2xl italic">VS</span>
+              <div className="w-14 h-14 bg-black border border-white/10 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(232,0,45,0.2)]">
+                <span className="font-syne font-black text-[#E8002D] text-2xl italic">VS</span>
               </div>
             </div>
 
@@ -306,6 +342,17 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
+
+            {/* Mobile VS separator */}
+            <div className="lg:hidden flex items-center justify-center py-8 border-t border-b border-white/[0.05] bg-black">
+              <div className="flex items-center gap-4">
+                <div className="h-[1px] w-16 bg-white/10" />
+                <div className="w-14 h-14 bg-black border border-[#E8002D]/30 rounded-full flex items-center justify-center">
+                  <span className="font-syne font-black text-[#E8002D] text-xl italic">VS</span>
+                </div>
+                <div className="h-[1px] w-16 bg-white/10" />
+              </div>
+            </div>
 
             {/* WeDo Column */}
             <motion.div
@@ -372,8 +419,8 @@ export default function Home() {
       </section>
 
       {/* ═══════ SERVICES ════════════════════════════ */}
-      <section className="relative z-10 section-gap px-6 md:px-16 border-t border-white/[0.05]" id="services">
-        <div className="max-w-screen-xl mx-auto">
+      <section className="relative z-10 section-gap px-6 md:px-16 xl:px-24 border-t border-white/[0.05]" id="services">
+        <div className="max-w-screen-2xl mx-auto">
 
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
@@ -421,8 +468,8 @@ export default function Home() {
       </section>
 
       {/* ═══════ PROCESS ═════════════════════════════ */}
-      <section className="relative z-10 section-gap px-6 md:px-16 border-t border-white/[0.05]">
-        <div className="max-w-screen-xl mx-auto">
+      <section className="relative z-10 section-gap px-6 md:px-16 xl:px-24 border-t border-white/[0.05]">
+        <div className="max-w-screen-2xl mx-auto">
           <div className="telemetry-line mb-5 text-white/70 justify-center md:justify-start">Our Process</div>
           <h2 className="font-syne font-black text-white uppercase italic leading-[1.1] md:leading-[0.88] tracking-tight mb-16 heading-safe text-center md:text-left"
               style={{ fontSize: 'clamp(2rem, 7vw, 6rem)' }}>
@@ -454,8 +501,8 @@ export default function Home() {
       </section>
 
       {/* ═══════ TESTIMONIALS ════════════════════════ */}
-      <section className="relative z-10 section-gap px-6 md:px-16 border-t border-white/[0.05]">
-        <div className="max-w-screen-xl mx-auto">
+      <section className="relative z-10 section-gap px-6 md:px-16 xl:px-24 border-t border-white/[0.05]">
+        <div className="max-w-screen-2xl mx-auto">
           <div className="telemetry-line justify-center mb-16">Client Feedback</div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -491,15 +538,15 @@ export default function Home() {
 
 
       {/* ═══════ MARQUEE ═════════════════════════════ */}
-      <section className="relative z-10 py-12 border-t border-white/[0.05] overflow-hidden">
+      <section className="relative z-10 py-16 border-t border-white/[0.05] overflow-hidden">
         <motion.div
-          animate={{ x: [0, -1400] }}
-          transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-          className="flex gap-16 whitespace-nowrap"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+          className="flex gap-16 whitespace-nowrap w-max"
         >
-          {[...Array(8)].map((_, i) => (
+          {[...Array(16)].map((_, i) => (
             <span key={i} className="font-syne font-black italic select-none"
-                  style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', WebkitTextStroke: '1.5px rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.05)' }}>
+                  style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', WebkitTextStroke: '1.5px rgba(255,255,255,0.18)', color: 'rgba(255,255,255,0.04)' }}>
               WEDO AGENCY&nbsp;·&nbsp;
             </span>
           ))}

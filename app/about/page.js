@@ -20,10 +20,10 @@ const TEAM = [
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen bg-black pt-40 md:pt-64 pb-24 px-6 md:px-24 z-10 overflow-hidden">
+    <main className="relative min-h-screen bg-black pt-40 md:pt-64 pb-24 px-6 md:px-16 xl:px-24 z-10 overflow-hidden">
       <div className="scanlines" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-screen-2xl mx-auto relative z-10">
         <div className="flex items-center gap-6 mb-12">
           <div className="w-12 h-[1px] bg-white/40" />
           <span className="text-white/40 font-mono text-[11px] tracking-widest md:tracking-[0.5em] uppercase font-bold text-center md:text-left">Protocol_01 // Operational_Intel</span>
@@ -32,7 +32,7 @@ export default function AboutPage() {
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-[clamp(2rem,8vw,7rem)] font-syne font-black uppercase leading-[1.1] md:leading-tight mb-20 md:mb-32 italic text-center"
+          className="text-[clamp(2rem,8vw,7rem)] font-syne font-black uppercase leading-[1.1] md:leading-tight mb-20 md:mb-32 italic text-center lg:text-left"
         >
           <span className="text-white">WHO WE </span>
           <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', color: 'transparent' }}>ARE.</span>
@@ -126,7 +126,7 @@ export default function AboutPage() {
                 className="relative py-12 border border-white/5 bg-white/[0.01] clip-panel group hover:bg-white/[0.03] transition-all"
               >
                 <div className="text-white/5 font-syne font-black text-6xl md:text-9xl absolute -top-4 left-1/2 -translate-x-1/2 select-none group-hover:text-white/10 transition-colors">0{i+1}</div>
-                <div className="relative z-10 text-white uppercase font-black text-[11px] md:text-[10px] tracking-[0.4em] mt-8">{step}</div>
+                <div className="relative z-10 text-white uppercase font-black text-[12px] tracking-[0.3em] mt-8">{step}</div>
                 <div className="mt-4 w-6 h-[1px] bg-white/10 mx-auto group-hover:w-12 group-hover:bg-white transition-all duration-500" />
               </motion.div>
             ))}

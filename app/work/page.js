@@ -36,10 +36,10 @@ const PROJECTS = [
 
 export default function WorkPage() {
   return (
-    <main className="relative min-h-screen bg-black pt-40 md:pt-64 pb-24 px-6 md:px-24 z-10 overflow-hidden">
+    <main className="relative min-h-screen bg-black pt-40 md:pt-64 pb-24 px-6 md:px-16 xl:px-24 z-10 overflow-hidden">
       <div className="scanlines" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-screen-2xl mx-auto relative z-10">
         <div className="flex items-center gap-6 mb-12">
           <div className="w-12 h-[1px] bg-white/40" />
           <span className="text-white/60 font-mono text-[11px] tracking-widest md:tracking-[0.5em] uppercase font-bold text-center md:text-left">Protocol_04 // Project_Archive</span>
@@ -48,7 +48,7 @@ export default function WorkPage() {
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-[clamp(2rem,8vw,7rem)] font-syne font-black uppercase leading-[1.1] md:leading-tight mb-20 md:mb-32 italic text-center"
+          className="text-[clamp(2rem,8vw,7rem)] font-syne font-black uppercase leading-[1.1] md:leading-tight mb-20 md:mb-32 italic text-center lg:text-left"
         >
           <span className="text-white">OUR </span>
           <span style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', color: 'transparent' }}>WORK.</span>
@@ -71,7 +71,7 @@ export default function WorkPage() {
                     <span className="font-mono text-[#E8002D] text-[10px] tracking-widest">0{i+1}</span>
                     <div className="flex flex-wrap gap-3 md:gap-2">
                       {project.tags.map(tag => (
-                        <span key={tag} className="text-[11px] md:text-[10px] font-mono text-white/40 md:text-white/20 uppercase tracking-widest">{tag}</span>
+                        <span key={tag} className="text-[11px] font-mono text-white/40 uppercase tracking-widest">{tag}</span>
                       ))}
                     </div>
                   </div>
@@ -82,8 +82,8 @@ export default function WorkPage() {
 
                 <div className="flex items-center gap-8 md:gap-16 mt-8 md:mt-0">
                   <div className="text-right">
-                    <div className="text-[10px] font-mono text-white/60 uppercase tracking-widest mb-1">{project.category}</div>
-                    <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">{project.year}</div>
+                    <div className="text-[11px] font-mono text-white/60 uppercase tracking-widest mb-1">{project.category}</div>
+                    <div className="text-[11px] font-mono text-white/40 uppercase tracking-widest">{project.year}</div>
                   </div>
                   <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#E8002D] group-hover:border-[#E8002D] transition-all duration-500">
                     <span className="text-xl text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
